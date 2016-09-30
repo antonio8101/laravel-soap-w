@@ -55,6 +55,11 @@ class Service
   protected $options = [];
 
   /**
+   * @var string
+   */
+  private $use;
+
+  /**
    * Set the name of the service
    *
    * @param string $name
@@ -401,6 +406,37 @@ class Service
     $this->client->__setSoapHeaders($this->headers);
 
     return $this;
+  }
+
+  /**
+  * Return a soap client
+  *
+  * @return resource
+  */
+  public function getClient()
+  {
+      return $this->client;
+  }
+
+  /**
+  * Get the last request xml
+  *
+  * @return $this
+  */
+  public function lastRequest()
+  {
+      $this->client->__getLastRequest();
+
+      return $this;
+  }
+
+  /**
+  * Set Use 
+  *
+  */
+  public function setUse($param)
+  {
+      $this->use = $param;
   }
 
 }
