@@ -124,4 +124,40 @@ Class Wrapper {
         return $this;
     }
 
+    /**
+     * This function encodes the data from the request (split in object's data and object's name)
+     * to resolve compatibility problem between PHP SoapClient and some .NET SOAP services.
+     * Some SOAP services has complex object type on its WSDL and XSD definitions, in some case they are not 
+     * automatically understood by PHP SoapClient Library.
+     * This SoapClient feature of PHP to obtains a more explicit object definition, and bypass the XDS definitions
+     * provided by the WSDL of the service.
+     *
+     * @param $paramObject
+     * @param string $paramObjectName
+     * @return array
+     */
+    public function encodeParamsInSoapVarObject($paramObject, $paramObjectName="")
+    {
+
+        if(!is_object($paramObject)){
+
+            if(is_array($paramObject)){
+
+                $result = $paramObject;
+
+            } else {
+
+                $result = [ $paramObjectName => $paramObject ];
+
+            }
+
+        } else {
+
+            $result = [ new SoapVar($paramObject, SOAP_ENC_OBJECT, null, null, $paramObjectName, null) ];
+
+        }
+
+        return $result;
+    }
+
 }
