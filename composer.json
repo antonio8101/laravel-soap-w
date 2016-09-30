@@ -1,12 +1,16 @@
 {
-    "name": "artisaninweb/laravel-soap",
-    "description": "A SoapClient wrapper integration for Laravel",
+    "name": "antonio8101/laravel-soap",
+    "description": "A SoapClient wrapper integration for Laravel derived from Artisaninweb/laravel-soap",
     "keywords": ["laravel", "soap", "client", "wrapper"],
     "license": "MIT",
     "authors": [
         {
             "name": "Michael van de Rijt",
             "email": "me@mvdrijt.com"
+        },
+        {
+            "name": "Antonio Bruno",
+            "email": "antonio8101@gmail.com"
         }
     ],
     "require": {
